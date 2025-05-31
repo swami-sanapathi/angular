@@ -159,3 +159,22 @@ a,
     white-space: pre;
   }
 }
+
+.nav-badge {
+  margin-left: 8px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav-badge-new {
+  background-color: #4CAF50; // Green
+  color: white;
+}
+
+.nav-badge-updated {
+  background-color: #FFC107; // Amber
+  color: black;
+}

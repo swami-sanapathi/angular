@@ -15,7 +15,12 @@
               [attr.aria-label]="item.label"
               [matTooltipClass]="'API-tooltip'"
             >
-              <span [class.docs-external-link]="item.isExternal" class="docs-faceted-list-item-text">{{ item.label }}</span>
+              <span [class.docs-external-link]="item.isExternal" class="docs-faceted-list-item-text">
+                {{ item.label }}
+                <span *ngIf="item.badge" class="nav-badge" [class.nav-badge-new]="item.badge === 'new'" [class.nav-badge-updated]="item.badge === 'updated'">
+                  {{ item.badge }}
+                </span>
+              </span>
               @if (item.children && item.level! > 1 && !item.isExpanded) {
                 <docs-icon>chevron_right</docs-icon>
               }
@@ -39,7 +44,12 @@
               [attr.aria-label]="item.label"
               [matTooltipClass]="'API-tooltip'"
             >
-              <span class="docs-faceted-list-item-text">{{item.label}}</span>
+              <span class="docs-faceted-list-item-text">
+                {{item.label}}
+                <span *ngIf="item.badge" class="nav-badge" [class.nav-badge-new]="item.badge === 'new'" [class.nav-badge-updated]="item.badge === 'updated'">
+                  {{ item.badge }}
+                </span>
+              </span>
               @if (item.children && !item.isExpanded) {
                 <docs-icon>chevron_right</docs-icon>
               }

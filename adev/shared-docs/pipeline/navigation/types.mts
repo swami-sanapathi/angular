@@ -9,14 +9,14 @@
 /**
  * `NavigationItem` generation strategy
  */
-export type NavigationItemGenerationStrategy = {
-  /** App route path prefix. */
+import {NavigationItem} from '../../interfaces';
+
+export interface NavigationItemGenerationStrategy {
+  labelGeneratorFn: (name: string, firstLine?: string) => string;
   pathPrefix: string;
-  /** Content path where the source files are kept. */
   contentPath: string;
-  /** Page/route label generator function. */
-  labelGeneratorFn: (fileName: string, firstLine: string) => string;
-};
+  getBadgeType?: (filePath: string) => NavigationItem['badge'] | undefined; // Added getBadgeType function
+}
 
 /** Strategy for navigation item generation. */
 export type Strategy = 'errors' | 'extended-diagnostics';

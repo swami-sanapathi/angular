@@ -15,4 +15,5 @@ export interface NavigationItem {
   level?: number;
   parent?: NavigationItem;
   contentPath?: string;
+  badge?: 'new' | 'updated'; // Added badge property
 }

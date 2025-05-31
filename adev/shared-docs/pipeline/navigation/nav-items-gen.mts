@@ -25,17 +25,19 @@ export async function generateNavItems(
   strategy: NavigationItemGenerationStrategy,
 ): Promise<NavigationItem[]> {
   const navItems: NavigationItem[] = [];
-  const {labelGeneratorFn, pathPrefix, contentPath} = strategy;
+  const {labelGeneratorFn, pathPrefix, contentPath, getBadgeType} = strategy; // Added getBadgeType
 
   for (const path of mdFilesPaths) {
     const fullPath = resolve(dirname(path), basename(path));
     const name = path.split('/').pop()?.replace('.md', '')!;
     const firstLine = await getMdFileHeading(fullPath);
+    const badge = getBadgeType ? getBadgeType(fullPath) : undefined; // Get badge type
 
     navItems.push({
       label: labelGeneratorFn(name, firstLine),
       path: `${pathPrefix}/${name}`,
       contentPath: `${contentPath}/${name}`,
+      badge, // Added badge property
     });
   }
 
